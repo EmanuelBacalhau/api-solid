@@ -19,6 +19,14 @@ export class RegisterUserUseCase {
 
     const password_hash = await hash(password, 6)
 
-    await this.registerUserRepository.create({ email, name, password_hash })
+    const user = await this.registerUserRepository.create({
+      email,
+      name,
+      password_hash,
+    })
+
+    return {
+      user,
+    }
   }
 }
