@@ -23,7 +23,7 @@ describe('Authenticate use case', () => {
     expect(user.id).toEqual(expect.any(String))
   })
 
-  it('should not be able to authenticate wth wrong email', async () => {
+  it('should not be able to authenticate with wrong email', async () => {
     const userRepository = new InMemoryUsersRepository()
     const sut = new AuthenticateUsersUseCase(userRepository)
 
@@ -35,7 +35,7 @@ describe('Authenticate use case', () => {
     ).rejects.toBeInstanceOf(InvalidCredentialsError)
   })
 
-  it('should not be able to authenticate wth wrong password', async () => {
+  it('should not be able to authenticate with wrong password', async () => {
     const userRepository = new InMemoryUsersRepository()
     const sut = new AuthenticateUsersUseCase(userRepository)
 
