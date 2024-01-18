@@ -34,6 +34,6 @@ export async function registerUserController(
       })
     }
 
-    return reply.status(500).send() // TODO: fix me
+    throw error
   }
 }
