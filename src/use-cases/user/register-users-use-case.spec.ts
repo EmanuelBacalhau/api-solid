@@ -32,7 +32,7 @@ describe('User register use case', () => {
       password: '123456',
     })
 
-    expect(() =>
+    await expect(() =>
       sut.execute({
         name: 'John Doe',
         email,
