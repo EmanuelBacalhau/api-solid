@@ -9,17 +9,17 @@ let gymsRepository: InMemorGymsRepository
 let sut: CheckInUseCase
 
 describe('Check in use case', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     checkInRepository = new InMemoryCheckInRepository()
     gymsRepository = new InMemorGymsRepository()
     sut = new CheckInUseCase(checkInRepository, gymsRepository)
 
-    gymsRepository.create({
+    await gymsRepository.create({
       id: 'gym-10',
       title: 'JavaScript Gym',
       description: '',
-      latitude: new Decimal(-7.2894063),
-      longitude: new Decimal(-35.6114703),
+      latitude: -7.2894063,
+      longitude: -35.6114703,
       phone: '',
     })
 
@@ -83,7 +83,7 @@ describe('Check in use case', () => {
   })
 
   it('should not be able to check-in on distant gym', async () => {
-    gymsRepository.items.push({
+    await gymsRepository.create({
       id: 'gym-11',
       title: 'JavaScript Gym',
       description: '',
@@ -91,7 +91,7 @@ describe('Check in use case', () => {
       longitude: new Decimal(-35.6114703),
       phone: '',
     })
-    // -7.2929933,-35.5510776
+
     await expect(() =>
       sut.execute({
         gymId: 'gym-11',
@@ -102,3 +102,5 @@ describe('Check in use case', () => {
     ).rejects.toBeInstanceOf(Error)
   })
 })
+
+//   refactor: Create gym in test in check-in use case
