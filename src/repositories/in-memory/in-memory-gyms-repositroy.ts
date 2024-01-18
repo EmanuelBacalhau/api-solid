@@ -8,7 +8,7 @@ export class InMemorGymsRepository implements GymsRepository {
 
   async create(data: Prisma.GymCreateInput) {
     const gym = {
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
       latitude: new Decimal(data.latitude.toString()),
       longitude: new Decimal(data.longitude.toString()),
       title: data.title,
