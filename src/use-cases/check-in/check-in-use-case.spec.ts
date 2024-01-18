@@ -102,5 +102,3 @@ describe('Check in use case', () => {
     ).rejects.toBeInstanceOf(Error)
   })
 })
-
-//   refactor: Create gym in test in check-in use case
