@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import { app } from '@/app'
 import request from 'supertest'
 
-describe('Register users controller', () => {
+describe('Register users controller (e2e)', () => {
   beforeAll(async () => {
     await app.ready()
   })
