@@ -17,5 +17,5 @@ export async function searchGymsController(
 
   const { gyms } = await searchGymsUseCase.execute({ query: q, page })
 
-  return reply.status(200).send(gyms)
+  return reply.status(200).send({ gyms })
 }
