@@ -15,11 +15,11 @@ export async function nearbyGymsController(
     }),
   })
 
-  const { latitude, longitude } = nearbyGymsQuerySchema.parse(request.params)
+  const { latitude, longitude } = nearbyGymsQuerySchema.parse(request.query)
 
   const searchGymsUseCase = makeFetchNearbyGymsUseCase()
 
-  const gyms = await searchGymsUseCase.execute({
+  const { gyms } = await searchGymsUseCase.execute({
     userLatitude: latitude,
     userLongitude: longitude,
   })
